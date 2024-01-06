@@ -35,7 +35,12 @@ class CalendarsController < ApplicationController
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
 
-      wday_num = Date.today.wday
+      wday_num = Date.today.wday + x
+      # 今日が月曜日Date.today.wdayの値は１
+      # Date.today.wday ＋ ０ ＝ １
+      # Date.today.wday ＋ １ ＝ ２
+      # Date.today.wday ＋ ２ ＝ ３
+      # Date.today.wday ＋ ３ ＝ ４
       # wdayメソッドを用いて取得した数値
       if wday_num >= 7
         #「wday_numが7以上の場合」という条件式
